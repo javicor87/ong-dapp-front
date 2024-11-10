@@ -1,0 +1,61 @@
+<mat-card style="width: 50%; margin: 50px auto">
+    <mat-card-content style="color: white">Donar</mat-card-content>
+    <div class="mat-elevation-z2" style="display: flex;justify-content: center;">
+      <form [formGroup]="formDonacion">
+        <mat-form-field>
+          <mat-label>Causa benéfica</mat-label>
+          <mat-select formControlName="indexcb">
+              @for (cb of listaCausasBeneficas; track cb; let index = $index) {
+                <mat-option [value]="index">{{cb.nombre}}</mat-option>
+              }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" style="margin-left: 15px;">
+          <mat-label>Dirección</mat-label>
+          <input matInput placeholder="Dirección" formControlName="wallet">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" style="margin-left: 15px;">
+          <mat-label>Cantidad</mat-label>
+          <input matInput placeholder="Cantidad" formControlName="cant">
+        </mat-form-field>
+      </form>
+      <button mat-stroked-button aria-label="Show an example snack-bar" style="margin-left: 20px;" (click)="donar()">
+        Donar
+      </button>
+    </div>
+</mat-card>
+  
+<mat-card style="width: 50%; margin: 50px auto">
+    <mat-card-content style="color: white">Causas donadas</mat-card-content>
+    <div class="mat-elevation-z2" style="display: -webkit-inline-box;">
+      <mat-form-field class="example-full-width" style="margin-left: 15px;">
+        <mat-label>Dirección</mat-label>
+        <input matInput placeholder="Dirección" [(ngModel)]="direccionDonante" (blur)="cargarCausasDonadas()">
+      </mat-form-field>
+      <mat-list role="list" style="margin-left: 15px;">
+        @for (cd of listaCausasDonadas; track cd; let index = $index) {          
+          <mat-list-item role="listitem">{{cd}}</mat-list-item>
+        }
+      </mat-list>
+    </div>
+</mat-card>
+
+<mat-card style="width: 50%; margin: 50px auto">
+    <mat-card-content style="color: white">Distribuir fondos</mat-card-content>
+    <button mat-stroked-button aria-label="Show an example snack-bar" style=" margin: 15px auto; display: flex;justify-content: center;" (click)="distribuirFondos()">
+      Transferir
+    </button>
+</mat-card>
+
+<mat-card style="width: 50%; margin: 50px auto">
+    <mat-card-content style="color: white">Balance</mat-card-content>
+    <mat-form-field class="example-full-width">
+      <mat-label>Balance contrato</mat-label>
+      <input matInput disabled [(ngModel)]="balanceContrato">
+    </mat-form-field>
+</mat-card>
+
+<button mat-stroked-button aria-label="Show an example snack-bar" (click)="volver()" 
+  style="padding: 30px; margin: 50px auto; display: flex;justify-content: center;">
+  Volver
+</button>

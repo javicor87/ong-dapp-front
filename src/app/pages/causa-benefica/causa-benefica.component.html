@@ -1,0 +1,20 @@
+<div class="mat-elevation-z2" style="width: 30%; padding: 30px; margin: 50px auto; display: flex;justify-content: center;">
+    <form [formGroup]="formCausaBenefica">
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre">
+              </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Wallet</mat-label>
+                <input matInput formControlName="wallet">
+              </mat-form-field>
+        </div>    
+        <div class="flex">
+            <button mat-flat-button color="warn" (click)="volver()">Volver</button>
+            <button mat-flat-button color="primary" (click)="guardar()" style="margin-left: 20px;">Guardar</button>            
+        </div>
+    </form>
+</div>
